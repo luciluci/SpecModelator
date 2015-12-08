@@ -1,0 +1,62 @@
+digraph "Idle" {
+  rankdir=LR
+  node [shape=Mrecord, color="#AAAAAA", fontname="Arial", fontsize=10, height=0.02, width=0.02]
+  edge [color=pink, len=0.5, penwidth=4.0, fontname="Arial", fontsize=12, fontcolor="#AA00CC"]
+
+  Idle [label=Idle]
+ Idle -> LoginDefault
+  LoginDefault [label=Login]
+ LoginDefault -> CommandScreenLogin_OK
+  CommandScreenLogin_OK [label=CommandScreen]
+ CommandScreenLogin_OK -> ArmedDefault
+  ArmedDefault [label=Armed]
+ ArmedDefault -> DisarmedDefault
+  DisarmedDefault [label=Disarmed]
+ DisarmedDefault -> CommandScreenDefault
+  CommandScreenDefault [label=CommandScreen]
+ CommandScreenDefault -> ArmedDefault
+  ArmedDefault [label=Armed]
+
+ CommandScreenDefault -> ChangeTemperatureDefault
+  ChangeTemperatureDefault [label=ChangeTemperature]
+ ChangeTemperatureDefault -> ConfirmationScreenOK
+  ConfirmationScreenOK [label=ConfirmationScreen]
+ ConfirmationScreenOK -> CommandScreenDefault
+  CommandScreenDefault [label=CommandScreen]
+
+
+
+ CommandScreenDefault -> ConfirmationScreenNOK
+  ConfirmationScreenNOK [label=ConfirmationScreen]
+ ConfirmationScreenNOK -> CommandScreenDefault
+  CommandScreenDefault [label=CommandScreen]
+
+
+ CommandScreenDefault -> Idle
+  Idle [label=Idle]
+
+
+
+
+ CommandScreenLogin_OK -> ChangeTemperatureDefault
+  ChangeTemperatureDefault [label=ChangeTemperature]
+
+ CommandScreenLogin_OK -> ConfirmationScreenNOK
+  ConfirmationScreenNOK [label=ConfirmationScreen]
+
+ CommandScreenLogin_OK -> Idle
+  Idle [label=Idle]
+
+
+ LoginDefault -> Idle
+  Idle [label=Idle]
+
+
+ Idle -> CreateNewAccountDefault
+  CreateNewAccountDefault [label=CreateNewAccount]
+ CreateNewAccountDefault -> Idle
+  Idle [label=Idle]
+
+
+
+}

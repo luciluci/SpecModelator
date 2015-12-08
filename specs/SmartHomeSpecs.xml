@@ -1,0 +1,31 @@
+<statemachine>
+	<state name="Idle">
+		<nextState name="Login" command="userLogin" log="Transition to Login screen" imageId="Default"/>
+		<nextState name="CreateNewAccount" command="userCreateAccount" log="Transition to CreateNewAccount screen" imageId="Default"/>
+	</state>
+	<state name="Login">
+		<nextState name="CommandScreen" command="submitCredentials" BussinessLogicCall="validateUser() == true" text="User authenticated" imageId="Login_OK"/>
+		<nextState name="Idle" command="submitCredentials" BussinessLogicCall="validateUser() == false" text="User failed to authenticate" imageId="Login_NOK"/>
+	</state>
+	<state name="CommandScreen">
+		<nextState name="Armed" command="armSystem" log="Arming system" imageId="Default"/>
+		<nextState name="ChangeTemperature" command="changeTemperature" BussinessLogicCall="validatetemperatureSources() == true" imageId="Default"/>
+		<nextState name="ConfirmationScreen" command="changeTemperature" BussinessLogicCall="validatetemperatureSources() == false" imageId="NOK"/>
+		<nextState name="Idle" command="logOff" BussinessLogicCall="LoggingOff()" imageId="Default"/>
+	</state>
+	<state name="ChangeTemperature">
+		<nextState name="ConfirmationScreen" imageId="OK"/>
+	</state>
+	<state name="ConfirmationScreen">
+		<nextState name="CommandScreen" imageId="Default"/>
+	</state>
+	<state name="Armed">
+		<nextState name="Disarmed" command="arm_system" BussinessLogicCall="armSystem()" text="System armed" imageId="Default"/>
+	</state>
+	<state name="Disarmed">
+		<nextState name="CommandScreen" command="disarm_system" BussinessLogicCall="disarmSystem()" text="System disarmed" imageId="Default"/>
+	</state>
+	<state name="CreateNewAccount">
+		<nextState name="Idle" BussinessLogicCall="createAccount()" text="Account Created" imageId="Default"/>
+	</state>
+</statemachine>
