@@ -1,8 +1,6 @@
 """
 File History:
-10.07.2015: Creation
-17.07.2015: TO DO: createNodesText is dummy, change it so it will draw correctly the nodes
-14.08.2015: TO DO: create A->B connections
+08.12.2015: Creation
 """
 
 from xml.dom.minidom import parse
