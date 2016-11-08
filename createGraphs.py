@@ -107,6 +107,7 @@ def writeGraphFiles(outfile, text):
     for format_ in ("svg",):
         DotUtil.convertDotGraph(outfile, format_)
         
+        
 def writeHTMLFile(inputFileName, outputFileName):
     read_data = ""
     with open(inputFileName, 'r') as f:
@@ -119,7 +120,7 @@ def writeHTMLFile(inputFileName, outputFileName):
     
 if __name__ == "__main__":
 
-    dialogSpecFilename = "C:/Work/SmartHome/demoSH/specs/SmartHomeSpecs.xml"
+    dialogSpecFilename = "specs/SmartHomeSpecs.xml"
     readXml(dialogSpecFilename)
     
 
